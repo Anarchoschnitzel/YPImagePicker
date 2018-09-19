@@ -86,8 +86,8 @@ you'll need to ad these `plist entries` :
 
 ```swift
 var config = YPImagePickerConfiguration()
-config.libraryMediaType = .photoAndVideo
-config.onlySquareFromLibrary = false
+config.library.mediaType = .photoAndVideo
+config.library.onlySquare  = false
 config.onlySquareImagesFromCamera = true
 config.targetImageSize = .original
 config.usesFrontCamera = true
@@ -95,17 +95,21 @@ config.showsFilters = true
 config.filters = [YPFilterDescriptor(name: "Normal", filterName: ""),
                   YPFilterDescriptor(name: "Mono", filterName: "CIPhotoEffectMono")]
 config.shouldSaveNewPicturesToAlbum = true
-config.videoCompression = AVAssetExportPresetHighestQuality
+config.video.compression = AVAssetExportPresetHighestQuality
 config.albumName = "MyGreatAppName"
 config.screens = [.library, .photo, .video]
 config.startOnScreen = .library
-config.videoRecordingTimeLimit = 10
-config.videoFromLibraryTimeLimit = 20
+config.video.recordingTimeLimit = 10
+config.video.libraryTimeLimit = 20
 config.showsCrop = .rectangle(ratio: (16/9))
 config.wordings.libraryTitle = "Gallery"
 config.hidesStatusBar = false
 config.overlayView = myOverlayView
 config.library.maxNumberOfItems = 5
+config.library.minNumberOfItems = 3
+config.library.numberOfItemsInRow = 3
+config.library.spacingBetweenItems = 2
+config.isScrollToChangeModesEnabled = false
 
 // Build a picker with your configuration
 let picker = YPImagePicker(configuration: config)
@@ -198,7 +202,7 @@ picker.didFinishPicking { [unowned picker] items, cancelled in
 That's it !
 
 ## Languages
-🇺🇸 English, 🇪🇸 Spanish, 🇫🇷 French 🇷🇺 Russian, 🇳🇱 Dutch, 🇧🇷 Brazilian, 🇹🇷 Turkish,  Arabic, 🇩🇪 German, 🇮🇹 Italian, 🇯🇵 Japanese
+🇺🇸 English, 🇪🇸 Spanish, 🇫🇷 French 🇷🇺 Russian, 🇳🇱 Dutch, 🇧🇷 Brazilian, 🇹🇷 Turkish, 🇸🇾 Arabic, 🇩🇪 German, 🇮🇹 Italian, 🇯🇵 Japanese, 🇨🇳 Chinese, 🇮🇩 Indonesian
 
 If your language is not supported, you can still customize the wordings via the `configuration.wordings` api:
 
@@ -309,6 +313,10 @@ Special thanks to [ihtiht](https://github.com/ihtiht) for the cool looking logo!
 
 ## Dependency
 YPImagePicker relies on [prynt/PryntTrimmerView](https://github.com/prynt/PryntTrimmerView) for provide video trimming and cover features. Big thanks to @HHK1 for making this open source :)
+
+## Obj-C support
+Objective-C is not supported and this is not on our roadmap.
+Swift is the future and dropping Obj-C is the price to pay to keep our velocity on this library :)
 
 ## License
 YPImagePicker is released under the MIT license.  

@@ -37,21 +37,24 @@ final class YPMenuItem: UIView {
         )
         
         textLabel.centerInContainer()
+        |-(10)-textLabel-(10)-|
         button.fillContainer()
         
         textLabel.style { l in
             l.textAlignment = .center
             l.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium)
             l.textColor = self.unselectedColor()
+            l.adjustsFontSizeToFitWidth = true
+            l.numberOfLines = 2
         }
     }
     
     func selectedColor() -> UIColor {
-        return UIColor(r: 38, g: 38, b: 38)
+        return YPImagePickerConfiguration.shared.bottomMenuItemSelectedColour
     }
     
     func unselectedColor() -> UIColor {
-        return UIColor(r: 153, g: 153, b: 153)
+        return YPImagePickerConfiguration.shared.bottomMenuItemUnSelectedColour
     }
     
     func select() {
